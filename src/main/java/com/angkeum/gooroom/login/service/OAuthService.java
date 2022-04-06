@@ -90,6 +90,7 @@ public class OAuthService {
     }
 
     public void createKakaoUser(String token) {
+        System.out.println("token : " + token);
 
         String reqURL = "https://kapi.kakao.com/v2/user/me";
 
@@ -104,7 +105,9 @@ public class OAuthService {
 
             //결과 코드가 200이라면 성공
             int responseCode = conn.getResponseCode();
+            String requestProperty = conn.getRequestProperty("Authorization");
             System.out.println("responseCode : " + responseCode);
+            System.out.println("requestProperty : " + requestProperty);
 
             //요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
